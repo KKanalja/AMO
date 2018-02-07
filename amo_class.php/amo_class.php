@@ -316,7 +316,7 @@ public function get_phones($contact)
 	{
 		$link='https://'.$this->subdomain.'.amocrm.ru/api/v2/leads';
 		$lead['id']=$id;
-		$lead['last_modified']=time();
+		$lead['updated_at']=time();
 		$param['update']=array($lead);
 		$res=$this->sendPOST($link,$param);
 		if($this->last_code!=200)return -1;
