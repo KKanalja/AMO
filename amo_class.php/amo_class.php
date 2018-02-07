@@ -54,7 +54,7 @@ class AMO {
 	    $out=curl_exec($curl); #Инициируем запрос к API и сохраняем ответ в переменную
 	    $code=curl_getinfo($curl,CURLINFO_HTTP_CODE); #Получим HTTP-код ответа сервера
 	    $this->last_code=$code;
-	    $this->last_error=$out;
+	    if($code!=200)$this->last_error=$out;
 	    curl_close($curl); #Завершаем сеанс cURL
 	    $Response=json_decode($out,true);
 	    return $Response;
@@ -78,6 +78,7 @@ class AMO {
 	    $out=curl_exec($curl); #Инициируем запрос к API и сохраняем ответ в переменную
 	    $code=curl_getinfo($curl,CURLINFO_HTTP_CODE); #Получим HTTP-код ответа сервера
 	    $this->last_code=$code;
+	    if($code!=200)$this->last_error=$out;
 	    curl_close($curl); #Завершаем сеанс cURL
 	    $Response=json_decode($out,true);
 	    return $Response;
