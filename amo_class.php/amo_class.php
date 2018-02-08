@@ -55,6 +55,7 @@ class AMO {
 	    $code=curl_getinfo($curl,CURLINFO_HTTP_CODE); #Получим HTTP-код ответа сервера
 	    $this->last_code=$code;
 	    if($code!=200)$this->last_error=$out;
+		if($code==429)sleep(5);
 	    curl_close($curl); #Завершаем сеанс cURL
 	    $Response=json_decode($out,true);
 	    return $Response;
@@ -79,6 +80,7 @@ class AMO {
 	    $code=curl_getinfo($curl,CURLINFO_HTTP_CODE); #Получим HTTP-код ответа сервера
 	    $this->last_code=$code;
 	    if($code!=200)$this->last_error=$out;
+	if($code==429)sleep(5);
 	    curl_close($curl); #Завершаем сеанс cURL
 	    $Response=json_decode($out,true);
 	    return $Response;
